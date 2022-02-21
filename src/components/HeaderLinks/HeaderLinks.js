@@ -26,8 +26,7 @@ const HeaderLinks = ({
   const { t } = useTranslation();
   const [shortAddress, setShortAddress] = useState('');
   const { ensName, nom } = useENS(address);
-  console.log('NOM: ' + nom);
-  console.log(address);
+
   useEffect(() => {
     if (!connected) {
       return;
