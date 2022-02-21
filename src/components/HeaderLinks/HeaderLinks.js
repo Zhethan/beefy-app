@@ -9,7 +9,6 @@ import Button from 'components/CustomButtons/Button.js';
 import { useTranslation } from 'react-i18next';
 import { LanguageDropdown } from '../LanguageDropdown/LanguageDropdown';
 import Davatar from '@davatar/react';
-
 import styles from './styles';
 import { useENS } from 'features/home/hooks/useENS';
 
@@ -26,8 +25,9 @@ const HeaderLinks = ({
   const classes = useStyles();
   const { t } = useTranslation();
   const [shortAddress, setShortAddress] = useState('');
-  const { ensName } = useENS(address);
-
+  const { ensName, nom } = useENS(address);
+  console.log('NOM: ' + nom);
+  console.log(address);
   useEffect(() => {
     if (!connected) {
       return;
@@ -64,7 +64,7 @@ const HeaderLinks = ({
                 <div style={{ marginRight: '7px' }}>
                   <Davatar size={24} address={address} />
                 </div>
-                <div>{ensName || shortAddress}</div>
+                <div>{ensName ? ensName : nom ? nom : shortAddress}</div>
               </div>
             </>
           ) : (
